@@ -1,5 +1,5 @@
 ﻿
---  1: СОЗДАНИЕ БАЗЫ ДАННЫХ
+--  СОЗДАНИЕ БД
 USE master;
 GO
 
@@ -18,7 +18,7 @@ GO
 
 
 
---  2: СОЗДАНИЕ СХЕМ
+--  СХЕМЫ
 CREATE SCHEMA HumanResources;
 GO
 CREATE SCHEMA Production;
@@ -32,19 +32,19 @@ GO
 --  NULL не допускается. Автоматически создаёт уникальный индекс.
 --  По умолчанию — кластерный. Удалить индекс нельзя, пока живёт PK.
 
--- Создаём таблицу БЕЗ PK
+-- таблица БЕЗ PK
 CREATE TABLE HumanResources.TestPK (
     ID   INT          NOT NULL,
     Name NVARCHAR(50) NOT NULL
 );
 GO
 
--- добавляем PRIMARY KEY
+-- PRIMARY KEY
 ALTER TABLE HumanResources.TestPK
 ADD CONSTRAINT [PK_TestPK] PRIMARY KEY CLUSTERED ([ID] ASC);
 GO
 
--- Нормальные вставки проходят
+-- вставки проходят
 INSERT INTO HumanResources.TestPK VALUES (1, N'Первый');
 INSERT INTO HumanResources.TestPK VALUES (2, N'Второй');
 
